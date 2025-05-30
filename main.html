@@ -3,233 +3,1040 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yee Jie Jun | Biodata</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <title>YEE JIE JUN | Arcane Engineer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        body {
-            background: #181a1b;
-            color: #f5f6fa;
-            font-family: 'Montserrat', Arial, sans-serif;
+        :root {
+            --dark-purple: #2a0b42;
+            --magic-purple: #5e2a8c;
+            --spell-blue: #3a86ff;
+            --rune-gold: #ffbe0b;
+            --parchment: #f5e6ca;
+            --ink: #1a1423;
+            --glow: 0 0 10px rgba(90, 40, 150, 0.8);
+            --ghost-white: #f8f8ff;
+        }
+        
+        @font-face {
+            font-family: 'Magic';
+            src: url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&display=swap');
+        }
+        
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
         }
+        
+        body {
+            background-color: var(--dark-purple);
+            color: var(--parchment);
+            font-family: 'Cinzel Decorative', 'Times New Roman', serif;
+            line-height: 1.6;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(90, 40, 150, 0.1) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(90, 40, 150, 0.1) 0%, transparent 20%);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        
         .container {
-            max-width: 850px;
-            margin: 40px auto;
-            background: #232526;
-            border-radius: 18px;
-            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-            padding: 2.5rem 2rem 2rem 2rem;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 20px;
             position: relative;
         }
-        h1 {
-            text-align: center;
-            font-size: 2.5rem;
-            color: #00aaff;
-            letter-spacing: 2px;
-            margin-bottom: 0.5rem;
-        }
-        .profile-pic {
-            display: block;
-            margin: 0 auto 1.2rem auto;
-            width: 140px;
-            height: 140px;
-            object-fit: cover;
+        
+        /* Profile Picture */
+        .profile-container {
+            position: relative;
+            width: 150px;
+            height: 150px;
+            margin: 0 auto 20px;
             border-radius: 50%;
-            border: 4px solid #00aaff;
-            box-shadow: 0 4px 20px 0 rgba(0,170,255,0.2);
-            background: #333;
+            border: 3px solid var(--rune-gold);
+            box-shadow: 0 0 20px var(--magic-purple);
+            overflow: hidden;
+            z-index: 10;
         }
-        .contact-info {
+        
+        .profile-pic {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        /* Animated Ghost */
+        .magic-ghost {
+            position: absolute;
+            width: 80px;
+            height: 100px;
+            z-index: 100;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            animation: floatGhost 15s infinite ease-in-out;
+        }
+        
+        .ghost-body {
+            position: absolute;
+            width: 100%;
+            height: 80%;
+            background-color: var(--ghost-white);
+            border-radius: 50% 50% 0 0;
+            box-shadow: 0 0 15px rgba(248, 248, 255, 0.8);
+        }
+        
+        .ghost-eyes {
+            position: absolute;
+            width: 100%;
+            top: 30%;
+            display: flex;
+            justify-content: space-around;
+        }
+        
+        .ghost-eye {
+            width: 15px;
+            height: 20px;
+            background-color: var(--spell-blue);
+            border-radius: 50%;
+            animation: blink 3s infinite;
+        }
+        
+        .ghost-mouth {
+            position: absolute;
+            width: 30px;
+            height: 15px;
+            background-color: var(--spell-blue);
+            border-radius: 0 0 50% 50%;
+            top: 50%;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: mouthMove 5s infinite;
+        }
+        
+        .ghost-bottom {
+            position: absolute;
+            width: 100%;
+            height: 20%;
+            bottom: 0;
+            display: flex;
+        }
+        
+        .ghost-wave {
+            flex: 1;
+            height: 100%;
+            background-color: var(--ghost-white);
+            border-radius: 0 0 50% 50%;
+            animation: ghostWave 2s infinite ease-in-out;
+            box-shadow: 0 0 15px rgba(248, 248, 255, 0.8);
+        }
+        
+        .ghost-wave:nth-child(1) { animation-delay: 0s; }
+        .ghost-wave:nth-child(2) { animation-delay: 0.1s; }
+        .ghost-wave:nth-child(3) { animation-delay: 0.2s; }
+        .ghost-wave:nth-child(4) { animation-delay: 0.3s; }
+        .ghost-wave:nth-child(5) { animation-delay: 0.4s; }
+        
+        @keyframes floatGhost {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            25% { transform: translate(50px, 30px) rotate(5deg); }
+            50% { transform: translate(100px, 0) rotate(0deg); }
+            75% { transform: translate(50px, -30px) rotate(-5deg); }
+            100% { transform: translate(0, 0) rotate(0deg); }
+        }
+        
+        @keyframes blink {
+            0%, 96%, 98%, 100% { height: 20px; }
+            97% { height: 5px; }
+        }
+        
+        @keyframes mouthMove {
+            0%, 100% { width: 30px; height: 15px; }
+            50% { width: 40px; height: 20px; }
+        }
+        
+        @keyframes ghostWave {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .magic-ghost:hover {
+            transform: scale(1.2);
+            animation-play-state: paused;
+        }
+        
+        /* Ghost trail effect */
+        .ghost-trail {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: var(--ghost-white);
+            opacity: 0;
+            pointer-events: none;
+            z-index: 99;
+            filter: blur(1px);
+        }
+        
+        /* Magic Particles */
+        .particle {
+            position: absolute;
+            background-color: var(--spell-blue);
+            border-radius: 50%;
+            opacity: 0.6;
+            animation: float 15s infinite linear;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0) rotate(0deg); }
+            100% { transform: translateY(-100vh) rotate(360deg); }
+        }
+        
+        /* Header with magical glow */
+        header {
+            background: linear-gradient(135deg, var(--dark-purple), var(--magic-purple));
+            color: var(--rune-gold);
+            padding: 30px 0 40px;
             text-align: center;
-            margin-bottom: 2rem;
-            color: #b2bec3;
+            margin-bottom: 40px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--glow);
+            border-bottom: 3px solid var(--rune-gold);
         }
-        .contact-info p {
-            margin: 0.2rem 0;
-            font-size: 1rem;
+        
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><path d="M20,20 L80,20 L80,80 L20,80 Z" fill="none" stroke="%23ffbe0b" stroke-width="0.5" opacity="0.3"/></svg>');
+            opacity: 0.1;
         }
-        .section {
-            background: rgba(30,34,40,0.96);
-            border-radius: 12px;
-            padding: 1.2rem 1.5rem;
-            margin-bottom: 1.5rem;
-            box-shadow: 0 2px 8px 0 rgba(0,0,0,0.12);
+        
+        header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            text-shadow: 0 0 15px var(--rune-gold);
+            letter-spacing: 2px;
+            position: relative;
+            z-index: 2;
         }
-        h2 {
-            color: #00aaff;
-            margin-top: 0;
-            font-size: 1.4rem;
-            border-left: 5px solid #00aaff;
-            padding-left: 0.7rem;
-            margin-bottom: 0.8rem;
+        
+        header p {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            position: relative;
+            z-index: 2;
         }
-        h3 {
-            color: #ffd700;
-            margin-top: 1.2rem;
-            margin-bottom: 0.3rem;
+        
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .contact-info a {
+            color: var(--parchment);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
             font-size: 1.1rem;
         }
-        ul {
-            margin: 0.2rem 0 1rem 1.2rem;
-            padding: 0;
+        
+        .contact-info a:hover {
+            color: var(--rune-gold);
+            text-shadow: 0 0 10px var(--rune-gold);
+            transform: translateY(-3px);
         }
-        ul li {
-            margin-bottom: 0.3rem;
-        }
-        .skills, .skills div {
+        
+        /* Main content with scroll-triggered magic */
+        .main-content {
             display: flex;
-            flex-wrap: wrap;
+            gap: 30px;
+            position: relative;
         }
-        .skills div {
-            background: #222d3a;
-            color: #00aaff;
-            padding: 0.45rem 1.1rem;
-            margin: 0.35rem;
-            border-radius: 18px;
-            font-size: 0.97rem;
-            font-weight: 500;
-            box-shadow: 0 1px 4px 0 rgba(0,170,255,0.08);
+        
+        .sidebar {
+            flex: 0 0 250px;
+            position: sticky;
+            top: 20px;
+            height: fit-content;
         }
-        @media (max-width: 600px) {
-            .container { padding: 1rem 0.3rem; }
-            .section { padding: 1rem 0.7rem; }
-            h1 { font-size: 2rem; }
-            .profile-pic { width: 100px; height: 100px; }
+        
+        .nav-menu {
+            background-color: rgba(42, 11, 66, 0.7);
+            border-radius: 8px;
+            box-shadow: var(--glow);
+            overflow: hidden;
+            border: 1px solid var(--magic-purple);
+            backdrop-filter: blur(5px);
         }
-        /* Subtle accent line at the top */
-        .accent-bar {
-            height: 7px;
-            background: linear-gradient(90deg, #00aaff 0%, #ffd700 100%);
-            border-radius: 8px 8px 0 0;
-            margin-bottom: 2rem;
+        
+        .nav-item {
+            padding: 18px 20px;
+            border-bottom: 1px solid rgba(90, 40, 150, 0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 1.1rem;
+            position: relative;
+            overflow: hidden;
         }
-        a {
-            color: #00aaff;
-            text-decoration: none;
+        
+        .nav-item:last-child {
+            border-bottom: none;
         }
-        a:hover {
-            text-decoration: underline;
+        
+        .nav-item::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 190, 11, 0.2), transparent);
+            transition: all 0.6s ease;
+        }
+        
+        .nav-item:hover::before {
+            left: 100%;
+        }
+        
+        .nav-item:hover {
+            background-color: rgba(90, 40, 150, 0.3);
+            color: var(--rune-gold);
+        }
+        
+        .nav-item.active {
+            background-color: rgba(90, 40, 150, 0.5);
+            color: var(--rune-gold);
+            border-left: 3px solid var(--rune-gold);
+        }
+        
+        .nav-item i {
+            width: 25px;
+            text-align: center;
+            font-size: 1.2rem;
+        }
+        
+        .content-area {
+            flex: 1;
+        }
+        
+        /* Spellbook-style sections */
+        .section {
+            background-color: rgba(245, 230, 202, 0.1);
+            border-radius: 8px;
+            box-shadow: var(--glow);
+            margin-bottom: 30px;
+            overflow: hidden;
+            transition: all 0.5s ease;
+            border: 1px solid var(--magic-purple);
+            background-image: 
+                url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><path d="M20,50 Q50,30 80,50 T20,50" fill="none" stroke="%235e2a8c" stroke-width="0.3" opacity="0.2"/></svg>');
+        }
+        
+        .section-header {
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            background: linear-gradient(90deg, rgba(90, 40, 150, 0.3), rgba(58, 134, 255, 0.2));
+            color: var(--rune-gold);
+            position: relative;
+        }
+        
+        .section-header::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--rune-gold), transparent);
+        }
+        
+        .section-header h2 {
+            font-size: 1.4rem;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            text-shadow: 0 0 5px var(--rune-gold);
+        }
+        
+        .section-header i {
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
+        }
+        
+        .section-content {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.5s ease;
+        }
+        
+        .section.expanded .section-content {
+            padding: 25px;
+            max-height: 5000px;
+        }
+        
+        .section.expanded .section-header i {
+            transform: rotate(180deg);
+        }
+        
+        /* Ancient scroll content */
+        .education-item, .project-item {
+            margin-bottom: 30px;
+            position: relative;
+            padding-left: 20px;
+        }
+        
+        .education-item::before, .project-item::before {
+            content: "✧";
+            position: absolute;
+            left: 0;
+            color: var(--rune-gold);
+        }
+        
+        .education-item h3, .project-item h3 {
+            color: var(--rune-gold);
+            margin-bottom: 8px;
+            font-size: 1.2rem;
+        }
+        
+        .education-item p, .project-item p {
+            margin-bottom: 8px;
+            color: var(--parchment);
+        }
+        
+        .education-item ul, .project-item ul {
+            margin-left: 25px;
+            margin-top: 10px;
+            list-style-type: none;
+        }
+        
+        .education-item li, .project-item li {
+            margin-bottom: 10px;
+            position: relative;
+            padding-left: 25px;
+        }
+        
+        .education-item li::before, .project-item li::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: var(--spell-blue);
+        }
+        
+        /* Magic rune skills */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        
+        .skill-category {
+            background-color: rgba(42, 11, 66, 0.5);
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid var(--magic-purple);
+            box-shadow: var(--glow);
+            transition: all 0.3s ease;
+        }
+        
+        .skill-category:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 20px var(--magic-purple);
+        }
+        
+        .skill-category h3 {
+            color: var(--rune-gold);
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+            border-bottom: 1px solid var(--magic-purple);
+            padding-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .skill-category ul {
+            list-style-type: none;
+        }
+        
+        .skill-category li {
+            padding: 8px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--parchment);
+        }
+        
+        .skill-category li::before {
+            content: "✦";
+            color: var(--spell-blue);
+        }
+        
+        /* Enchanted project cards */
+        .project-item {
+            background-color: rgba(42, 11, 66, 0.5);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border: 1px solid var(--magic-purple);
+            box-shadow: var(--glow);
+            transition: all 0.3s ease;
+        }
+        
+        .project-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 20px var(--magic-purple);
+        }
+        
+        .project-tech {
+            display: inline-block;
+            background-color: var(--magic-purple);
+            color: var(--parchment);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-top: 5px;
+            box-shadow: 0 0 5px var(--magic-purple);
+        }
+        
+        /* Alchemy circle footer */
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: var(--parchment);
+            margin-top: 50px;
+            position: relative;
+        }
+        
+        footer::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--rune-gold), transparent);
+        }
+        
+        footer p {
+            margin-bottom: 10px;
+        }
+        
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .main-content {
+                flex-direction: column;
+            }
+            
+            .sidebar {
+                flex: 1;
+                position: static;
+                margin-bottom: 30px;
+            }
+            
+            .skills-container {
+                grid-template-columns: 1fr;
+            }
+            
+            header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .contact-info {
+                gap: 15px;
+            }
+            
+            .contact-info a {
+                font-size: 1rem;
+            }
+            
+            .profile-container {
+                width: 120px;
+                height: 120px;
+            }
+            
+            .magic-ghost {
+                width: 60px;
+                height: 75px;
+            }
+            
+            .ghost-eye {
+                width: 12px;
+                height: 16px;
+            }
+            
+            .ghost-mouth {
+                width: 24px;
+                height: 12px;
+            }
+        }
+        
+        /* Magic animations */
+        @keyframes pulse {
+            0% { opacity: 0.3; }
+            50% { opacity: 0.7; }
+            100% { opacity: 0.3; }
+        }
+        
+        .magic-glow {
+            animation: pulse 3s infinite ease-in-out;
         }
     </style>
 </head>
 <body>
+    <!-- Magic particles -->
+    <div id="particles"></div>
+    
+    <!-- Animated Ghost -->
+    <div class="magic-ghost" id="magicGhost">
+        <div class="ghost-body"></div>
+        <div class="ghost-eyes">
+            <div class="ghost-eye"></div>
+            <div class="ghost-eye"></div>
+        </div>
+        <div class="ghost-mouth"></div>
+        <div class="ghost-bottom">
+            <div class="ghost-wave"></div>
+            <div class="ghost-wave"></div>
+            <div class="ghost-wave"></div>
+            <div class="ghost-wave"></div>
+            <div class="ghost-wave"></div>
+        </div>
+    </div>
+    
+    <header>
+        <div class="container">
+            <!-- Profile Picture -->
+            <div class="profile-container">
+                <img src="https://via.placeholder.com/150" alt="YEE JIE JUN" class="profile-pic" id="profilePic">
+            </div>
+            
+            <h1 class="magic-glow">YEE JIE JUN</h1>
+            <p>Arcane Engineer | Digital Alchemist</p>
+            <div class="contact-info">
+                <a href="tel:+60178755661"><i class="fas fa-scroll"></i> +60 17-8755661</a>
+                <a href="mailto:yee.jiejun1336@gmail.com"><i class="fas fa-envelope-open-text"></i> yee.jiejun1336@gmail.com</a>
+                <a href="#"><i class="fas fa-map-marked-alt"></i> Kuala Lumpur</a>
+            </div>
+        </div>
+    </header>
+    
     <div class="container">
-        <div class="accent-bar"></div>
-        <h1>Yee Jie Jun</h1>
-        <img src="Passport size Photo.jpeg" alt="Profile picture of Yee Jie Jun" class="profile-pic">
-        <div class="contact-info">
-            <p><strong>Phone:</strong> <a href="tel:+60178755661">+60 17-8755661</a></p>
-            <p><strong>Email:</strong> <a href="mailto:yee.jiejun1336@gmail.com">yee.jiejun1336@gmail.com</a></p>
-            <p><strong>Location:</strong> Kuala Lumpur, Malaysia</p>
-        </div>
-
-        <div class="section">
-            <h2>Summary</h2>
-            <p>Motivated Bachelor of Computer Engineering (Honours) student at University Malaysia Perlis, graduating in 2026. Experienced in C, Java, assembly, Verilog, and Python, with projects in embedded systems, digital design, and software applications. Skilled with tools like Quartus Prime, NI LabVIEW, NI Multisim, and WireShark. DEKAN award recipient (CGPA 3.82) and active in leadership roles. Fluent in Mandarin, English, and Malay. Seeking an internship from 28 July 2025 to 5 October 2025 to apply technical and teamwork skills.</p>
-        </div>
-
-        <div class="section">
-            <h2>Education</h2>
-            <h3>University Malaysia of Perlis, Perlis, Malaysia</h3>
-            <p><strong>Bachelor of Computer Engineering with Honours</strong> | CGPA: 3.82 | 2022 – Present</p>
-            <ul>
-                <li>Awarded DEKAN (Dean List) for Semester 1 and Semester 2 (2022/2023)</li>
-                <li>Relevant Coursework: Circuit Theory, Digital Electronics, Control Systems, Microprocessor Systems, Object-Oriented Programming, Communication Systems, Computer Networks, Digital Signal Processing, Engineering Mathematics, and Probability & Statistics.</li>
-            </ul>
-            <h3>Kolej Tingkatan Enam Desa Mahkota, Kuala Lumpur, Malaysia</h3>
-            <p><strong>Sijil Tinggi Persekolahan Malaysia (STPM)</strong> | CGPA: 2.75 | 2020 – 2022</p>
-            <ul>
-                <li>Obtained STPM subject results: Pengajian Am (3.33), Mathematics T (2.33), Physics (3.00), and Chemistry (2.33).</li>
-            </ul>
-        </div>
-
-        <div class="section">
-            <h2>Projects, Assignments & Workshops</h2>
-            <h3>Employee Payroll System (C language)</h3>
-            <ul>
-                <li>Developed an employee payroll system to input staff details, validate entries, and calculate income, deductions, and net salary.</li>
-                <li>Included options for users to perform multiple calculations or exit the program.</li>
-            </ul>
-            <h3>5-Bit Binary Sequence Detector (Verilog)</h3>
-            <ul>
-                <li>Developed a 5-bit binary overlapping sequence detector for the pattern '11011' using Quartus Prime, based on the Mealy model.</li>
-                <li>Built a state diagram and state table to ensure reliable detection in continuous data streams.</li>
-            </ul>
-            <h3>Password Security System (Assembly code)</h3>
-            <ul>
-                <li>Enabled users to set and enter passwords, with feedback on success or failure, and prompted re-entry upon failure.</li>
-                <li>Executed the project fully on software.</li>
-            </ul>
-            <h3>Bank Account Management System (Java)</h3>
-            <ul>
-                <li>Designed a system featuring two account types: savings and checking.</li>
-                <li>Incorporated functionalities to check overdraft limits, deposits, interest rates, withdrawal capabilities, and account balance inquiries.</li>
-            </ul>
-            <h3>Battery Charger Using 10KΩ NTC Thermistor (NI LabView)</h3>
-            <ul>
-                <li>Designed a battery charger system using a 10kΩ NTC thermistor and LabVIEW to monitor and control temperature between 30°C and 45°C.</li>
-                <li>Developed a signal conditioning circuit and programmed a Virtual Instrument for real-time temperature display, LED indicators, and safety cut-off.</li>
-            </ul>
-            <h3>Python Programming Fundamentals</h3>
-            <ul>
-                <li>Completed the Top Coders Malaysia 2024 Coding Challenge Pre-Competition Workshop, gaining foundational Python programming skills for competitive coding.</li>
-            </ul>
-        </div>
-
-        <div class="section">
-            <h2>Extracurricular Activities</h2>
-            <h3>St. John Ambulans Malaysia | Member | 2022 – Present</h3>
-            <ul>
-                <li>Completed one year of training in first aid and emergency response at University Malaysia Perlis.</li>
-                <li>Successfully passed the first aid test, obtaining membership and a first aid member card valid until 2026.</li>
-            </ul>
-            <h3>Kem Kepimpinan dan Kebudayaan Murid Sekolah Jenis Kebangsaan Peringkat Negeri Perlis Tahun 2023 | Vice Secretary | 16 – 19 November 2023</h3>
-            <ul>
-                <li>Developed project documentation, proofread over 10 formal letters, and ensured clear communication.</li>
-                <li>Coordinated student attendance details and assisted in organizing the camp alongside the president.</li>
-            </ul>
-        </div>
-
-        <div class="section">
-            <h2>Skills</h2>
-            <h3>Languages</h3>
-            <div class="skills">
-                <div>Mandarin (Native)</div>
-                <div>English (Fluent)</div>
-                <div>Malay (Fluent)</div>
+        <div class="main-content">
+            <div class="sidebar">
+                <div class="nav-menu">
+                    <div class="nav-item active" data-target="summary">
+                        <i class="fas fa-crystal-ball"></i> Arcane Summary
+                    </div>
+                    <div class="nav-item" data-target="education">
+                        <i class="fas fa-book-dead"></i> Mystical Education
+                    </div>
+                    <div class="nav-item" data-target="projects">
+                        <i class="fas fa-hat-wizard"></i> Enchanted Projects
+                    </div>
+                    <div class="nav-item" data-target="activities">
+                        <i class="fas fa-dragon"></i> Guild Activities
+                    </div>
+                    <div class="nav-item" data-target="skills">
+                        <i class="fas fa-pentagon"></i> Arcane Skills
+                    </div>
+                </div>
             </div>
-            <h3>Coding Tools</h3>
-            <div class="skills">
-                <div>Tera Term</div>
-                <div>CodeBlocks</div>
-                <div>LTspice</div>
-                <div>Quartus</div>
-                <div>my1sim85</div>
-                <div>NetBeans IDE</div>
-                <div>WireShark</div>
-                <div>NI LabView</div>
-                <div>NI Multisim</div>
-            </div>
-            <h3>Technical Skills</h3>
-            <div class="skills">
-                <div>Microsoft 365 (Word, PowerPoint, Excel)</div>
-                <div>Adobe Photoshop</div>
-                <div>Canva</div>
-                <div>Wondershare Filmora</div>
-            </div>
-            <h3>Soft Skills</h3>
-            <div class="skills">
-                <div>Learning Agility</div>
-                <div>Strategic Planning</div>
-                <div>Project Management</div>
-                <div>Communication</div>
-                <div>Problem-Solving</div>
-                <div>Creativity and Innovation</div>
-                <div>Research Skills</div>
+            
+            <div class="content-area">
+                <!-- Summary Section (always visible) -->
+                <div class="section expanded" id="summary-section">
+                    <div class="section-header">
+                        <h2><i class="fas fa-crystal-ball"></i> ARCANE SUMMARY</h2>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="section-content">
+                        <p>
+                            A devoted practitioner of the digital arcane arts, specializing in the mystic languages of C, Java, 
+                            assembly, Verilog, and Python. Trained in the ancient halls of University Malaysia Perlis (graduating 2026), 
+                            I've mastered the arts of embedded systems, digital design, and software applications. 
+                            Recognized by the DEKAN Council of Elders (CGPA 3.82) for exceptional arcane knowledge. 
+                            Fluent in the tongues of Mandarin, English, and Malay. Seeking an apprenticeship from 
+                            28 July 2025 to 5 October 2025 to combine technical sorcery with teamwork alchemy.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Education Section (collapsed by default) -->
+                <div class="section" id="education-section">
+                    <div class="section-header">
+                        <h2><i class="fas fa-book-dead"></i> MYSTICAL EDUCATION</h2>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="section-content">
+                        <div class="education-item">
+                            <h3>University Malaysia of Perlis</h3>
+                            <p>Bachelor of Computer Engineering with Honours | CGPA: 3.82</p>
+                            <ul>
+                                <li>Awarded DEKAN (Dean List) for Semester 1 and Semester 2 (2022/2023)</li>
+                                <li>Arcane Coursework: Circuit Divination, Digital Alchemy, Control Sigils, Microprocessor Runes, 
+                                    Object-Oriented Incantations, Communication Portals, Network Enchantments, Digital Signal Conjuring, 
+                                    Mathematical Sorcery, and Probability Charms.</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="education-item">
+                            <h3>Kolej Tingkatan Enam Desa Mahkota</h3>
+                            <p>Sijil Tinggi Persekolahan Malaysia (STPM) | CGPA: 2.75</p>
+                            <ul>
+                                <li>Mastered the following mystic arts: Pengajian Am (3.33), Mathematics T (2.33), Physics (3.00), and Chemistry (2.33).</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Projects Section (collapsed by default) -->
+                <div class="section" id="projects-section">
+                    <div class="section-header">
+                        <h2><i class="fas fa-hat-wizard"></i> ENCHANTED PROJECTS</h2>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="section-content">
+                        <div class="project-item">
+                            <h3>Employee Payroll Grimoire</h3>
+                            <span class="project-tech">C language</span>
+                            <ul>
+                                <li>Conjured an employee payroll system to inscribe staff details, validate entries, and calculate income, deductions, and net salary.</li>
+                                <li>Included arcane options for users to perform multiple calculations or banish the program.</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="project-item">
+                            <h3>5-Bit Binary Sequence Oracle</h3>
+                            <span class="project-tech">Verilog</span>
+                            <ul>
+                                <li>Engineered a 5-bit binary sequence scrying device for the pattern '11011' using Quartus Prime, based on the Mealy prophecy model.</li>
+                                <li>Constructed a mystical state diagram and divination table to ensure reliable detection in continuous data streams.</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="project-item">
+                            <h3>Password Protection Ward</h3>
+                            <span class="project-tech">Assembly code</span>
+                            <ul>
+                                <li>Enabled users to set and enter secret incantations, with mystical feedback on success or failure.</li>
+                                <li>Executed the enchantment entirely through arcane software means.</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="project-item">
+                            <h3>Bank Account Tome</h3>
+                            <span class="project-tech">Java</span>
+                            <ul>
+                                <li>Designed a system featuring two account types: savings (hoarding) and checking (spending).</li>
+                                <li>Incorporated mystical functionalities to check overdraft limits, deposits, interest rates, withdrawal capabilities, and account balance inquiries.</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="project-item">
+                            <h3>Battery Charger with Thermistor Talisman</h3>
+                            <span class="project-tech">NI LabView</span>
+                            <ul>
+                                <li>Created a battery charging artifact using a 10kΩ NTC thermistor and LabVIEW to monitor and control temperature between 30°C and 45°C.</li>
+                                <li>Developed a signal conditioning ritual and programmed a Virtual Instrument for real-time temperature scrying, LED indicators, and safety wards.</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="project-item">
+                            <h3>Python Spellbook Fundamentals</h3>
+                            <span class="project-tech">Python</span>
+                            <ul>
+                                <li>Completed the Top Coders Malaysia 2024 Coding Challenge Pre-Competition Workshop, gaining foundational Python spellcraft for competitive coding duels.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Activities Section (collapsed by default) -->
+                <div class="section" id="activities-section">
+                    <div class="section-header">
+                        <h2><i class="fas fa-dragon"></i> GUILD ACTIVITIES</h2>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="section-content">
+                        <div class="project-item">
+                            <h3>St. John Ambulans Malaysia</h3>
+                            <span class="project-tech">Healer</span>
+                            <ul>
+                                <li>Completed one year of training in healing arts and emergency response at University Malaysia Perlis.</li>
+                                <li>Successfully passed the healing trials, obtaining membership and a healer's sigil valid until 2026.</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="project-item">
+                            <h3>Kem Kepimpinan dan Kebudayaan Murid Sekolah Jenis Kebangsaan Peringkat Negeri Perlis Tahun 2023</h3>
+                            <span class="project-tech">Scroll Keeper</span>
+                            <ul>
+                                <li>Chronicled guild documentation, proofread over 10 sacred scrolls, and ensured clear communication.</li>
+                                <li>Coordinated apprentice attendance details and assisted in organizing the gathering alongside the guildmaster.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Skills Section (collapsed by default) -->
+                <div class="section" id="skills-section">
+                    <div class="section-header">
+                        <h2><i class="fas fa-pentagon"></i> ARCANE SKILLS</h2>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="section-content">
+                        <div class="skills-container">
+                            <div class="skill-category">
+                                <h3><i class="fas fa-language"></i> Mystic Tongues</h3>
+                                <ul>
+                                    <li>Mandarin (Ancient)</li>
+                                    <li>English (Common)</li>
+                                    <li>Malay (Local)</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="skill-category">
+                                <h3><i class="fas fa-laptop-code"></i> Arcane Tools</h3>
+                                <ul>
+                                    <li>Tera Term</li>
+                                    <li>CodeBlocks</li>
+                                    <li>LTspice</li>
+                                    <li>Quartus</li>
+                                    <li>my1sim85</li>
+                                    <li>NetBeans IDE</li>
+                                    <li>WireShark</li>
+                                    <li>NI LabView</li>
+                                    <li>NI Multisim</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="skill-category">
+                                <h3><i class="fas fa-tools"></i> Alchemical Skills</h3>
+                                <ul>
+                                    <li>Microsoft 365 (Word, PowerPoint, Excel)</li>
+                                    <li>Adobe Photoshop</li>
+                                    <li>Canva</li>
+                                    <li>Wondershare Filmora</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="skill-category">
+                                <h3><i class="fas fa-brain"></i> Wizardly Traits</h3>
+                                <ul>
+                                    <li>Learning Agility</li>
+                                    <li>Strategic Divination</li>
+                                    <li>Project Conjuring</li>
+                                    <li>Arcane Communication</li>
+                                    <li>Problem-Solving</li>
+                                    <li>Creativity and Innovation</li>
+                                    <li>Research Wizardry</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 YEE JIE JUN. All arcane rights reserved.</p>
+            <p>Seeking magical apprenticeship from 28 July 2025 to 5 October 2025</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Create magic particles
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 30;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                
+                // Random properties
+                const size = Math.random() * 5 + 2;
+                const posX = Math.random() * 100;
+                const posY = Math.random() * 100;
+                const delay = Math.random() * 15;
+                const duration = Math.random() * 10 + 10;
+                const opacity = Math.random() * 0.5 + 0.2;
+                
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                particle.style.left = `${posX}%`;
+                particle.style.top = `${posY}%`;
+                particle.style.animationDelay = `${delay}s`;
+                particle.style.animationDuration = `${duration}s`;
+                particle.style.opacity = opacity;
+                
+                // Random color variation
+                const colorVar = Math.random() * 60 - 30;
+                particle.style.backgroundColor = `hsl(${230 + colorVar}, 100%, 70%)`;
+                
+                particlesContainer.appendChild(particle);
+            }
+            
+            // Magic Ghost Animation
+            const magicGhost = document.getElementById('magicGhost');
+            let ghostX = 50;
+            let ghostY = 50;
+            let trail = [];
+            
+            // Make ghost draggable
+            magicGhost.addEventListener('mousedown', function(e) {
+                e.preventDefault();
+                let shiftX = e.clientX - magicGhost.getBoundingClientRect().left;
+                let shiftY = e.clientY - magicGhost.getBoundingClientRect().top;
+                
+                function moveAt(pageX, pageY) {
+                    ghostX = pageX - shiftX;
+                    ghostY = pageY - shiftY;
+                    
+                    magicGhost.style.left = ghostX + 'px';
+                    magicGhost.style.top = ghostY + 'px';
+                    
+                    // Create trail effect
+                    if (trail.length > 5) {
+                        const oldDot = trail.shift();
+                        if (oldDot && oldDot.parentNode) {
+                            oldDot.parentNode.removeChild(oldDot);
+                        }
+                    }
+                    
+                    const dot = document.createElement('div');
+                    dot.classList.add('ghost-trail');
+                    dot.style.left = (ghostX + 40) + 'px';
+                    dot.style.top = (ghostY + 50) + 'px';
+                    document.body.appendChild(dot);
+                    
+                    // Animate trail
+                    setTimeout(() => {
+                        dot.style.opacity = '0.6';
+                        dot.style.transform = 'scale(1)';
+                        
+                        setTimeout(() => {
+                            dot.style.opacity = '0';
+                            dot.style.transform = 'scale(0.5)';
+                            
+                            setTimeout(() => {
+                                if (dot.parentNode) {
+                                    dot.parentNode.removeChild(dot);
+                                }
+                            }, 500);
+                        }, 300);
+                    }, 10);
+                    
+                    trail.push(dot);
+                }
+                
+                function onMouseMove(e) {
+                    moveAt(e.pageX, e.pageY);
+                }
+                
+                document.addEventListener('mousemove', onMouseMove);
+                
+                magicGhost.onmouseup = function() {
+                    document.removeEventListener('mousemove', onMouseMove);
+                    magicGhost.onmouseup = null;
+                };
+            });
+            
+            // Handle section expansion/collapse
+            const sectionHeaders = document.querySelectorAll('.section-header');
+            
+            sectionHeaders.forEach(header => {
+                header.addEventListener('click', function() {
+                    const section = this.parentElement;
+                    section.classList.toggle('expanded');
+                    
+                    // Add magical glow effect
+                    if (section.classList.contains('expanded')) {
+                        this.style.boxShadow = '0 0 20px var(--rune-gold)';
+                        setTimeout(() => {
+                            this.style.boxShadow = 'none';
+                        }, 1000);
+                    }
+                });
+            });
+            
+            // Handle navigation menu clicks
+            const navItems = document.querySelectorAll('.nav-item');
+            
+            navItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    // Remove active class from all items
+                    navItems.forEach(navItem => {
+                        navItem.classList.remove('active');
+                    });
+                    
+                    // Add active class to clicked item
+                    this.classList.add('active');
+                    
+                    // Get target section
+                    const targetId = this.getAttribute('data-target') + '-section';
+                    const targetSection = document.getElementById(targetId);
+                    
+                    // Collapse all sections
+                    document.querySelectorAll('.section').forEach(section => {
+                        section.classList.remove('expanded');
+                    });
+                    
+                    // Expand target section
+                    targetSection.classList.add('expanded');
+                    
+                    // Scroll to target section with magic effect
+                    targetSection.style.boxShadow = '0 0 30px var(--rune-gold)';
+                    setTimeout(() => {
+                        targetSection.style.boxShadow = 'var(--glow)';
+                    }, 1500);
+                    
+                    targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                });
+            });
+            
+            // Add magic hover effect to project items
+            const projectItems = document.querySelectorAll('.project-item');
+            projectItems.forEach(item => {
+                item.addEventListener('mouseenter', function() {
+                    this.querySelector('h3').style.color = 'var(--spell-blue)';
+                    this.querySelector('h3').style.textShadow = '0 0 10px var(--spell-blue)';
+                });
+                
+                item.addEventListener('mouseleave', function() {
+                    this.querySelector('h3').style.color = 'var(--rune-gold)';
+                    this.querySelector('h3').style.textShadow = 'none';
+                });
+            });
+            
+            // Replace placeholder image with actual profile picture
+            const profilePic = document.getElementById('profilePic');
+            // You would replace this with your actual image source
+            // profilePic.src = 'your-image-url.jpg';
+        });
+    </script>
 </body>
 </html>
-
